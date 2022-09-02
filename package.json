@@ -10,8 +10,15 @@
   },
   "dependencies": {
     "next": "12.2.5",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "bootstrap": "4.5.3",
+    "nouislider": "14.6.3",
+    "reactstrap": "8.7.1",
+    "sass": "1.54.0",
+    "classnames": "2.3.1",
+    "react-datetime": "3.1.1",
+    "perfect-scrollbar": "1.5.5"
   },
   "devDependencies": {
     "eslint": "8.23.0",
