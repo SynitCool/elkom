@@ -4,21 +4,22 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "12.2.5",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
     "bootstrap": "4.5.3",
+    "classnames": "2.3.1",
+    "next": "12.2.5",
     "nouislider": "14.6.3",
+    "perfect-scrollbar": "1.5.5",
+    "react": "17.0.2",
+    "react-datetime": "3.1.1",
+    "react-dom": "17.0.2",
     "reactstrap": "8.7.1",
     "sass": "1.54.0",
-    "classnames": "2.3.1",
-    "react-datetime": "3.1.1",
-    "perfect-scrollbar": "1.5.5"
+    "sharp": "^0.30.7"
   },
   "devDependencies": {
     "eslint": "8.23.0",

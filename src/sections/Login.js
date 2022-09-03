@@ -15,6 +15,10 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+
+// next
+import Image from "next/image";
+
 import React from "react";
 // reactstrap components
 import { Button, Container, Row, Col, UncontrolledTooltip } from "reactstrap";
@@ -26,7 +30,7 @@ export default function Login() {
       data-background-color="black"
       id="download-section"
     >
-      <img alt="..." className="path" src="/assets/images/path1.png" />
+      <Image alt="..." className="path" src="/assets/images/path1.png" />
       <Container>
         <Row className="justify-content-md-center">
           <Col className="text-center" lg="8" md="12">
@@ -60,7 +64,7 @@ export default function Login() {
               Thank you for visiting us!
             </h3>
             <h4 className="mb-0 font-weight-light">
-              Let's get in touch on any of these platforms.
+              Let&apos;s get in touch on any of these platforms.
             </h4>
           </Col>
           <Col className="text-lg-center btn-wrapper" lg="6">

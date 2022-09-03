@@ -15,6 +15,10 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+
+// next
+import Image from "next/image";
+
 import React from "react";
 import classnames from "classnames";
 // javascript plugin used to create scrollbars on windows
@@ -88,8 +92,8 @@ export default function Credit() {
     <>
       <div className="wrapper">
         <div className="page-header">
-          <img alt="..." className="dots" src="/assets/img/dots.png" />
-          <img alt="..." className="path" src="/assets/img/path4.png" />
+          <Image alt="..." className="dots" src="/assets/img/dots.png" />
+          <Image alt="..." className="path" src="/assets/img/path4.png" />
           <Container className="align-items-center">
             <Row>
               <Col lg="6" md="6">
@@ -143,7 +147,7 @@ export default function Credit() {
               <Col className="ml-auto mr-auto" lg="4" md="6">
                 <Card className="card-coin card-plain">
                   <CardHeader>
-                    <img
+                    <Image
                       alt="..."
                       className="img-center img-fluid rounded-circle"
                       src="/assets/img/mike.jpg"
