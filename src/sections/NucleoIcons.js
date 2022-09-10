@@ -16,17 +16,17 @@
 
 */
 
-// next
-import Image from "next/image";
-
 import React from "react";
 // reactstrap components
 import { Button, Container, Row, Col } from "reactstrap";
 
+// constant
+import routes from "../../constant/routes";
+
 export default function NucleoIcons() {
   return (
     <div className="section section-nucleo-icons">
-      <Image alt="..." className="path" src="/assets/images/path3.png" />
+      <img alt="..." className="path" src="/assets/images/path3.png" />
       <Container>
         <Row className="justify-content-center">
           <Col lg="8" md="12">
@@ -42,7 +42,7 @@ export default function NucleoIcons() {
         <br />
         <br />
         <div className="blur-hover">
-          <a href="#">
+          <a href={routes.login}>
             <div className="icons-container blur-item on-screen mt-5">
               {/* Center */}
               <i className="icon tim-icons icon-bulb-63" />

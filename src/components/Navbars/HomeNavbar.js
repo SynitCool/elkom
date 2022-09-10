@@ -5,7 +5,7 @@ import router from "next/router";
 import Cookies from "js-cookie";
 
 // utils
-import { removeSession } from "../../utils/read-cookies";
+import { removeSession } from "../../../utils/read-cookies";
 
 import React from "react";
 // reactstrap components
@@ -28,7 +28,7 @@ import {
 } from "reactstrap";
 
 // constant
-import routes from "../../constant/routes";
+import routes from "../../../constant/routes";
 
 export default function HomeNavbar() {
   const [collapseOpen, setCollapseOpen] = React.useState(false);
@@ -99,7 +99,7 @@ export default function HomeNavbar() {
           <div className="navbar-collapse-header">
             <Row>
               <Col className="collapse-brand" xs="6">
-                <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                <a href={routes.home} onClick={(e) => e.preventDefault()}>
                   Elkom - Community
                 </a>
               </Col>

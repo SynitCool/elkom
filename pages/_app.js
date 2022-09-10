@@ -3,6 +3,7 @@ import Router from "next/router";
 
 // styles
 import "../styles/css/nucleo-icons.css";
+import "../styles/css/spinner.css";
 import "../styles/scss/blk-design-system-react.scss";
 import "../styles/demo/demo.css";
 

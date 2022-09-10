@@ -1,5 +1,6 @@
 // next
 import { useRouter } from "next/router.js";
+import Head from "next/head.js";
 
 // react
 import React from "react";
@@ -59,6 +60,9 @@ export default function LoginPage() {
   const [password, setPassword] = React.useState("");
   const [terms, setTerms] = React.useState(false);
 
+  // loading
+  const [loading, setLoading] = React.useState(false);
+
   // router
   const router = useRouter();
 
@@ -66,7 +70,6 @@ export default function LoginPage() {
     if (sessionCookiesExist()) {
       router.push(routes.home);
     }
-
     document.body.classList.toggle("register-page");
     document.documentElement.addEventListener("mousemove", followCursor);
     // Specify how to clean up after this effect:
@@ -107,6 +110,8 @@ export default function LoginPage() {
     }
     const auth = ApiCall(username, password);
 
+    setLoading(true);
+
     auth.then((response) => {
       if (!response.success) {
         console.log("Auth is not success!");
@@ -115,6 +120,7 @@ export default function LoginPage() {
         setError(true);
         setErrorMessage(response.error_message);
 
+        setLoading(false);
         return;
       }
 
@@ -124,6 +130,8 @@ export default function LoginPage() {
       Cookies.set(sessionConstant, response.token);
 
       console.log("set a cookie for auth");
+
+      setLoading(false);
 
       router.push(routes.home);
     });
@@ -140,160 +148,172 @@ export default function LoginPage() {
 
   return (
     <>
-      <ExamplesNavbar />
-      <div className="wrapper">
-        <div className="page-header">
-          <div className="page-header-image" />
-          <div className="content">
-            <Container>
-              <Row>
-                <Col className="offset-lg-0 offset-md-3" lg="5" md="6">
-                  <div
-                    className="square square-7"
-                    id="square7"
-                    style={{ transform: squares7and8 }}
-                  />
-                  <div
-                    className="square square-8"
-                    id="square8"
-                    style={{ transform: squares7and8 }}
-                  />
-                  <Card className="card-register">
-                    <CardHeader>
-                      <CardImg
-                        alt="..."
-                        src="/assets/images/square-purple-1.png"
+      <Head>
+        <title>Elkom - Login</title>
+      </Head>
+      {loading ? (
+        <div className="loader-container">
+          <div className="loader-spinner"></div>
+        </div>
+      ) : (
+        <div>
+          <ExamplesNavbar />
+          <div className="wrapper">
+            <div className="page-header">
+              <div className="page-header-image" />
+              <div className="content">
+                <Container>
+                  <Row>
+                    <Col className="offset-lg-0 offset-md-3" lg="5" md="6">
+                      <div
+                        className="square square-7"
+                        id="square7"
+                        style={{ transform: squares7and8 }}
                       />
-                      <CardTitle tag="h4">Login</CardTitle>
-                    </CardHeader>
-                    <CardBody>
-                      {error && (
-                        <Card
-                          style={{
-                            backgroundColor: "#ff0033",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                        >
-                          <p>{errorMessage}</p>
-                        </Card>
-                      )}
-                      <Form className="form" onSubmit={handleSubmit}>
-                        <InputGroup
-                          className={classnames({
-                            "input-group-focus": emailFocus,
-                          })}
-                        >
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="tim-icons icon-single-02" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            placeholder="username / email"
-                            type="text"
-                            onChange={(event) => {
-                              setError(false);
-                              setUsername(event.target.value);
-                            }}
-                            value={username}
-                            onFocus={(e) => setEmailFocus(true)}
-                            onBlur={(e) => setEmailFocus(false)}
+                      <div
+                        className="square square-8"
+                        id="square8"
+                        style={{ transform: squares7and8 }}
+                      />
+                      <Card className="card-register">
+                        <CardHeader>
+                          <CardImg
+                            alt="..."
+                            src="/assets/images/square-purple-1.png"
                           />
-                        </InputGroup>
-                        <InputGroup
-                          className={classnames({
-                            "input-group-focus": passwordFocus,
-                          })}
-                        >
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="tim-icons icon-lock-circle" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            onChange={(event) => {
-                              setError(false);
-                              setPassword(event.target.value);
-                            }}
-                            value={password}
-                            placeholder="Password"
-                            type="password"
-                            onFocus={(e) => setPasswordFocus(true)}
-                            onBlur={(e) => setPasswordFocus(false)}
-                          />
-                        </InputGroup>
-                        <FormGroup check className="text-left">
-                          <Label check>
-                            <Input
-                              type="checkbox"
-                              onChange={(event) => {
-                                setError(false);
-                                setTerms(event.target.checked);
+                          <CardTitle tag="h4">Login</CardTitle>
+                        </CardHeader>
+                        <CardBody>
+                          {error && (
+                            <Card
+                              style={{
+                                backgroundColor: "#ff0033",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
                               }}
-                              checked={terms}
-                            />
-                            <span className="form-check-sign" />I agree to the{" "}
-                            <a
-                              href="#pablo"
-                              onClick={(e) => e.preventDefault()}
                             >
-                              terms and conditions
-                            </a>
-                            .
-                          </Label>
-                        </FormGroup>
-                        <CardFooter>
-                          <Button
-                            className="btn-round"
-                            color="primary"
-                            size="lg"
-                            type="submit"
-                          >
-                            Login
-                          </Button>
-                        </CardFooter>
-                      </Form>
-                    </CardBody>
-                  </Card>
-                </Col>
-              </Row>
-              <div className="register-bg" />
-              <div
-                className="square square-1"
-                id="square1"
-                style={{ transform: squares1to6 }}
-              />
-              <div
-                className="square square-2"
-                id="square2"
-                style={{ transform: squares1to6 }}
-              />
-              <div
-                className="square square-3"
-                id="square3"
-                style={{ transform: squares1to6 }}
-              />
-              <div
-                className="square square-4"
-                id="square4"
-                style={{ transform: squares1to6 }}
-              />
-              <div
-                className="square square-5"
-                id="square5"
-                style={{ transform: squares1to6 }}
-              />
-              <div
-                className="square square-6"
-                id="square6"
-                style={{ transform: squares1to6 }}
-              />
-            </Container>
+                              <p>{errorMessage}</p>
+                            </Card>
+                          )}
+                          <Form className="form" onSubmit={handleSubmit}>
+                            <InputGroup
+                              className={classnames({
+                                "input-group-focus": emailFocus,
+                              })}
+                            >
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>
+                                  <i className="tim-icons icon-single-02" />
+                                </InputGroupText>
+                              </InputGroupAddon>
+                              <Input
+                                placeholder="username / email"
+                                type="text"
+                                onChange={(event) => {
+                                  setError(false);
+                                  setUsername(event.target.value);
+                                }}
+                                value={username}
+                                onFocus={(e) => setEmailFocus(true)}
+                                onBlur={(e) => setEmailFocus(false)}
+                              />
+                            </InputGroup>
+                            <InputGroup
+                              className={classnames({
+                                "input-group-focus": passwordFocus,
+                              })}
+                            >
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>
+                                  <i className="tim-icons icon-lock-circle" />
+                                </InputGroupText>
+                              </InputGroupAddon>
+                              <Input
+                                onChange={(event) => {
+                                  setError(false);
+                                  setPassword(event.target.value);
+                                }}
+                                value={password}
+                                placeholder="Password"
+                                type="password"
+                                onFocus={(e) => setPasswordFocus(true)}
+                                onBlur={(e) => setPasswordFocus(false)}
+                              />
+                            </InputGroup>
+                            <FormGroup check className="text-left">
+                              <Label check>
+                                <Input
+                                  type="checkbox"
+                                  onChange={(event) => {
+                                    setError(false);
+                                    setTerms(event.target.checked);
+                                  }}
+                                  checked={terms}
+                                />
+                                <span className="form-check-sign" />I agree to
+                                the{" "}
+                                <a
+                                  href="#pablo"
+                                  onClick={(e) => e.preventDefault()}
+                                >
+                                  terms and conditions
+                                </a>
+                                .
+                              </Label>
+                            </FormGroup>
+                            <CardFooter>
+                              <Button
+                                className="btn-round"
+                                color="primary"
+                                size="lg"
+                                type="submit"
+                              >
+                                Login
+                              </Button>
+                            </CardFooter>
+                          </Form>
+                        </CardBody>
+                      </Card>
+                    </Col>
+                  </Row>
+                  <div className="register-bg" />
+                  <div
+                    className="square square-1"
+                    id="square1"
+                    style={{ transform: squares1to6 }}
+                  />
+                  <div
+                    className="square square-2"
+                    id="square2"
+                    style={{ transform: squares1to6 }}
+                  />
+                  <div
+                    className="square square-3"
+                    id="square3"
+                    style={{ transform: squares1to6 }}
+                  />
+                  <div
+                    className="square square-4"
+                    id="square4"
+                    style={{ transform: squares1to6 }}
+                  />
+                  <div
+                    className="square square-5"
+                    id="square5"
+                    style={{ transform: squares1to6 }}
+                  />
+                  <div
+                    className="square square-6"
+                    id="square6"
+                    style={{ transform: squares1to6 }}
+                  />
+                </Container>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

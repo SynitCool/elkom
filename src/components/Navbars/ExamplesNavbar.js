@@ -16,7 +16,7 @@
 
 */
 import React from "react";
-import { Link } from "react-router-dom";
+
 // reactstrap components
 import {
   Button,
@@ -29,8 +29,11 @@ import {
   Container,
   Row,
   Col,
-  UncontrolledTooltip
+  UncontrolledTooltip,
 } from "reactstrap";
+
+// constant
+import routes from "../../../constant/routes";
 
 export default function ExamplesNavbar() {
   const [collapseOpen, setCollapseOpen] = React.useState(false);
@@ -69,12 +72,12 @@ export default function ExamplesNavbar() {
     <Navbar className={"fixed-top " + color} color-on-scroll="100" expand="lg">
       <Container>
         <div className="navbar-translate">
-          <NavbarBrand to="/" id="navbar-brand" tag={Link}>
-            <span>BLK• </span>
-            Design System React
+          <NavbarBrand to="/" id="navbar-brand">
+            <span>Elkom - </span>
+            E-Learning Sakura Community
           </NavbarBrand>
           <UncontrolledTooltip placement="bottom" target="navbar-brand">
-            Designed and Coded by Creative Tim
+            Developed by SynitIsCool
           </UncontrolledTooltip>
           <button
             aria-expanded={collapseOpen}
@@ -96,8 +99,8 @@ export default function ExamplesNavbar() {
           <div className="navbar-collapse-header">
             <Row>
               <Col className="collapse-brand" xs="6">
-                <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                  BLK•React
+                <a href={routes.base} onClick={(e) => e.preventDefault()}>
+                  Elkom - Community
                 </a>
               </Col>
               <Col className="collapse-close text-right" xs="6">
@@ -115,7 +118,7 @@ export default function ExamplesNavbar() {
             <NavItem className="p-0">
               <NavLink
                 data-placement="bottom"
-                href="https://twitter.com/CreativeTim"
+                href="https://twitter.com/SynitIsCool"
                 rel="noopener noreferrer"
                 target="_blank"
                 title="Follow us on Twitter"
@@ -127,7 +130,7 @@ export default function ExamplesNavbar() {
             <NavItem className="p-0">
               <NavLink
                 data-placement="bottom"
-                href="https://www.facebook.com/CreativeTim"
+                href="https://www.facebook.com/bryanalhilal"
                 rel="noopener noreferrer"
                 target="_blank"
                 title="Like us on Facebook"
@@ -139,7 +142,7 @@ export default function ExamplesNavbar() {
             <NavItem className="p-0">
               <NavLink
                 data-placement="bottom"
-                href="https://www.instagram.com/CreativeTimOfficial"
+                href="https://www.instagram.com/synitiscool"
                 rel="noopener noreferrer"
                 target="_blank"
                 title="Follow us on Instagram"
@@ -149,22 +152,10 @@ export default function ExamplesNavbar() {
               </NavLink>
             </NavItem>
             <NavItem>
-              <Button
-                className="nav-link d-none d-lg-block"
-                color="primary"
-                target="_blank"
-                href="https://www.creative-tim.com/product/blk-design-system-pro-react?ref=bdsr-examples-navbar-upgrade-pro"
-              >
-                <i className="tim-icons icon-spaceship" /> Upgrade to PRO
-              </Button>
+              <NavLink href={routes.base}>Base</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/">
-                Back to Kit
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/creativetimofficial/blk-design-system-react/issues">
+              <NavLink href="https://github.com/SynitCool/elkom/issues">
                 Have an issue?
               </NavLink>
             </NavItem>
