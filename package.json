@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "bootstrap": "4.5.3",
     "classnames": "2.3.1",
+    "js-cookie": "^3.0.1",
     "next": "12.2.5",
     "nouislider": "14.6.3",
+    "nprogress": "^0.2.0",
     "perfect-scrollbar": "1.5.5",
     "react": "17.0.2",
     "react-datetime": "3.1.1",
