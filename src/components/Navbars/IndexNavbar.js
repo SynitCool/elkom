@@ -35,6 +35,9 @@ import {
   UncontrolledTooltip,
 } from "reactstrap";
 
+// constant
+import routes from "../../../constant/routes";
+
 export default function IndexNavbar() {
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   const [collapseOut, setCollapseOut] = React.useState("");
@@ -159,22 +162,22 @@ export default function IndexNavbar() {
             <NavItem className="p-0">
               <NavLink
                 data-placement="bottom"
-                href="https://www.instagram.com/CreativeTimOfficial"
+                href={routes.login}
                 rel="noopener noreferrer"
-                target="_blank"
                 title="Login to your account!"
               >
-                <p className="d-lg-none d-xl-none">Login to Elsakura Account</p>
+                <p className="d-lg-none d-xl-none">
+                  Login With Elsakura Account
+                </p>
               </NavLink>
             </NavItem>
             <NavItem>
               <Button
                 className="nav-link d-none d-lg-block"
                 color="primary"
-                target="_blank"
-                href="https://www.creative-tim.com/product/blk-design-system-pro-react?ref=bdsr-user-archive-index-navbar-upgrade-pro"
+                href={routes.login}
               >
-                <i className="tim-icons icon-spaceship" /> Login to Elsakura
+                <i className="tim-icons icon-spaceship" /> Login With Elsakura
                 Account
               </Button>
             </NavItem>

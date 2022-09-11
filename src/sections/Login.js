@@ -16,12 +16,12 @@
 
 */
 
-// next
-import Image from "next/image";
-
 import React from "react";
 // reactstrap components
 import { Button, Container, Row, Col, UncontrolledTooltip } from "reactstrap";
+
+// constant
+import routes from "../../constant/routes";
 
 export default function Login() {
   return (
@@ -30,7 +30,7 @@ export default function Login() {
       data-background-color="black"
       id="download-section"
     >
-      <Image alt="..." className="path" src="/assets/images/path1.png" />
+      <img alt="..." className="path" src="/assets/images/path1.png" />
       <Container>
         <Row className="justify-content-md-center">
           <Col className="text-center" lg="8" md="12">
@@ -45,11 +45,11 @@ export default function Login() {
             <Button
               className="btn-round"
               color="info"
-              href="#"
+              href={routes.login}
               role="button"
               size="lg"
             >
-              Login to Elkom
+              Login With Elsakura Account
             </Button>
           </Col>
         </Row>

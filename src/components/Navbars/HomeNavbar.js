@@ -1,26 +1,21 @@
-/*!
+// next
+import router from "next/router";
 
-=========================================================
-* BLK Design System React - v1.2.1
-=========================================================
+// cookies
+import Cookies from "js-cookie";
 
-* Product Page: https://www.creative-tim.com/product/blk-design-system-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/blk-design-system-react/blob/main/LICENSE.md)
+// utils
+import { removeSession } from "../../../utils/read-cookies";
 
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
-
 // reactstrap components
 import {
   Button,
   Collapse,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  UncontrolledDropdown,
   NavbarBrand,
   Navbar,
   NavItem,
@@ -35,7 +30,7 @@ import {
 // constant
 import routes from "../../../constant/routes";
 
-export default function ExamplesNavbar() {
+export default function HomeNavbar() {
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   const [collapseOut, setCollapseOut] = React.useState("");
   const [color, setColor] = React.useState("navbar-transparent");
@@ -68,6 +63,11 @@ export default function ExamplesNavbar() {
   const onCollapseExited = () => {
     setCollapseOut("");
   };
+  const scrollToDownload = () => {
+    document
+      .getElementById("download-section")
+      .scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <Navbar className={"fixed-top " + color} color-on-scroll="100" expand="lg">
       <Container>
@@ -99,7 +99,7 @@ export default function ExamplesNavbar() {
           <div className="navbar-collapse-header">
             <Row>
               <Col className="collapse-brand" xs="6">
-                <a href={routes.base} onClick={(e) => e.preventDefault()}>
+                <a href={routes.home} onClick={(e) => e.preventDefault()}>
                   Elkom - Community
                 </a>
               </Col>
@@ -118,46 +118,30 @@ export default function ExamplesNavbar() {
             <NavItem className="p-0">
               <NavLink
                 data-placement="bottom"
-                href="https://twitter.com/SynitIsCool"
                 rel="noopener noreferrer"
-                target="_blank"
-                title="Follow us on Twitter"
+                title="Log out"
+                href={routes.login}
+                onClick={() => {
+                  removeSession();
+
+                  router.push(routes.login);
+                }}
               >
-                <i className="fab fa-twitter" />
-                <p className="d-lg-none d-xl-none">Twitter</p>
-              </NavLink>
-            </NavItem>
-            <NavItem className="p-0">
-              <NavLink
-                data-placement="bottom"
-                href="https://www.facebook.com/bryanalhilal"
-                rel="noopener noreferrer"
-                target="_blank"
-                title="Like us on Facebook"
-              >
-                <i className="fab fa-facebook-square" />
-                <p className="d-lg-none d-xl-none">Facebook</p>
-              </NavLink>
-            </NavItem>
-            <NavItem className="p-0">
-              <NavLink
-                data-placement="bottom"
-                href="https://www.instagram.com/synitiscool"
-                rel="noopener noreferrer"
-                target="_blank"
-                title="Follow us on Instagram"
-              >
-                <i className="fab fa-instagram" />
-                <p className="d-lg-none d-xl-none">Instagram</p>
+                <p className="d-lg-none d-xl-none">Log out</p>
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href={routes.base}>Base</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/SynitCool/elkom/issues">
-                Have an issue?
-              </NavLink>
+              <Button
+                className="nav-link d-none d-lg-block"
+                color="red"
+                onClick={() => {
+                  removeSession();
+
+                  router.push(routes.login);
+                }}
+              >
+                Log out
+              </Button>
             </NavItem>
           </Nav>
         </Collapse>
